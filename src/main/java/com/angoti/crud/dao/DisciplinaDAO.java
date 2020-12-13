@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.angoti.crud.dominio.Disciplina;
@@ -17,8 +18,9 @@ public class DisciplinaDAO {
 	public void inserir(Disciplina disciplina) {
 		Connection conexao = FabricaDeConexao.getConnection();
 		PreparedStatement stmt;
-		String sql = "insert into disciplina" + "(nome,professor,periodo,codigo_sala_classroom)"
-				+ " values (?,?,?,?)";
+		String sql = "insert into disciplina" + 
+				"(nome,professor,periodo,codigo_sala_classroom) values (?,?,?,?)";
+
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, disciplina.getNome());
@@ -37,10 +39,11 @@ public class DisciplinaDAO {
 		List<Disciplina> lista = new ArrayList<Disciplina>();
 		Connection conexao = FabricaDeConexao.getConnection();
 		String sql = "select * from disciplina;";
+
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
-
 			ResultSet retorno = stmt.executeQuery();
+
 			while (retorno.next()) {
 				int id = retorno.getInt("id");
 				String nomeDisciplina = retorno.getString("nome");
@@ -63,6 +66,7 @@ public class DisciplinaDAO {
 		Connection conexao = FabricaDeConexao.getConnection();
 		PreparedStatement stmt;
 		String sql = "delete from disciplina where id = ?";
+
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, id);
@@ -77,8 +81,7 @@ public class DisciplinaDAO {
 	public void atualizar(Disciplina disciplina) {
 		Connection conexao = FabricaDeConexao.getConnection();
 		PreparedStatement stmt;
-		String sql = "update disciplina set nome=?,professor=?,periodo=?,codigo_sala_classroom=?"
-				+ " where id = ?";
+		String sql = "update disciplina set nome=?,professor=?,periodo=?,codigo_sala_classroom=?" + " where id = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, disciplina.getNome());
@@ -98,6 +101,7 @@ public class DisciplinaDAO {
 		Connection conexao = FabricaDeConexao.getConnection();
 		String sql = "select * from disciplina where id = ?;";
 		Disciplina disciplina = null;
+
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, id);
@@ -110,9 +114,7 @@ public class DisciplinaDAO {
 			disciplina = new Disciplina(id, periodo, nomeDisciplina, professor, cod);
 			stmt.close();
 			conexao.close();
-		} catch (
-
-		SQLException e) {
+		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
 		return disciplina;

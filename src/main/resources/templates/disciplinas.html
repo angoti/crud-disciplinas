@@ -11,6 +11,7 @@
             <th>Professor</th>
             <th>Período</th>
             <th>Classroom</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -20,6 +21,14 @@
             <td th:text="*{professor}">3</td>
             <td th:text="*{periodo}">4</td>
             <td th:text="*{codigo}">5</td>
+            <td>
+              <A th:href="@{/editar-disciplina(id=*{id})}">
+                <i class="material-icons">create</i>
+              </A>
+              <A th:href="@{/excluir-disciplina(id=*{id})}">
+                <i class="material-icons">delete</i>
+              </A>
+            </td>
           </tr>
         </tbody>
       </table>

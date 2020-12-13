@@ -7,11 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 import com.angoti.crud.dominio.Disciplina;
 
-@Repository
 public class DisciplinaDAO {
 
 	public void inserir(Disciplina disciplina) {

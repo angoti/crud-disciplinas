@@ -34,7 +34,7 @@ public class ProfessorDAO {
 
 	public void inserir(Professor professor) {
 		String sql = "insert into professor(nome) values (?);";
-		Object[] params = new Object[] { professor.getNome()};
+		Object[] params = new Object[] { professor.getNome() };
 		jdbcTemplate.update(sql, params);
 	}
 
@@ -50,7 +50,7 @@ public class ProfessorDAO {
 
 	public void excluir(Integer cod) {
 		String sql = "delete from professor where id = ?;";
-		Object[] params = new Object[] {cod};
+		Object[] params = new Object[] { cod };
 		jdbcTemplate.update(sql, params);
 	}
 }

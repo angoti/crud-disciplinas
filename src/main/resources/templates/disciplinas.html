@@ -18,7 +18,7 @@
           <tr th:each="disciplina:${lista}" th:object="${disciplina}">
             <td th:text="*{id}">1</td>
             <td th:text="*{nome}">2</td>
-            <td th:text="*{professor}">3</td>
+            <td th:text="*{professor.nome}">3</td>
             <td th:text="*{periodo}">4</td>
             <td th:text="*{codigo}">5</td>
             <td>

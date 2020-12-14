@@ -10,7 +10,13 @@
       </div>
       <div class="form-group">
         <label>Nome do professor responsável</label>
-        <input th:field="*{professor}" type="text" class="form-control">
+        <select id="professor.id" name="professor.id" class="form-control">
+          <option 
+              th:each="prof : ${lista}" 
+              th:value="${prof.id}" 
+              th:text="${prof.nome}"
+              th:selected="*{professor!=null}? (*{professor.id}==${prof.id})">opção</option>
+        </select>  
       </div>
       <div class="form-group">
         <label>Código classroom</label>

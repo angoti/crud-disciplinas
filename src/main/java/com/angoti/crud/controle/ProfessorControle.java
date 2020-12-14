@@ -12,6 +12,7 @@ import com.angoti.crud.dao.ProfessorDAO;
 import com.angoti.crud.dominio.Disciplina;
 import com.angoti.crud.dominio.Professor;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -40,7 +41,7 @@ public class ProfessorControle {
 	}
 
 	@GetMapping("/editar-professor")
-	public String exibeFormEdit(Model model, @RequestParam(name = "id", required = false) Integer cod){
+	public String exibeFormEdit(Model model, @RequestParam(name = "id", required = false) Integer cod) {
 		Professor professor = dao.buscaPorId(cod);
 		model.addAttribute("professor", professor);
 		return "professor-form";
@@ -51,7 +52,7 @@ public class ProfessorControle {
 		dao.atualizar(professor);
 		return "redirect:/professores";
 	}
-	
+
 	@GetMapping("/excluir-professor")
 	public String excluir(@RequestParam(name = "id", required = true) Integer cod) {
 		dao.excluir(cod);

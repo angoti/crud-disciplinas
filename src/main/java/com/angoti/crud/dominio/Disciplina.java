@@ -1,14 +1,15 @@
 package com.angoti.crud.dominio;
 
 public class Disciplina {
-	public Integer id, periodo;
-	public String nome, professor, codigo;
+	private Integer id, periodo;
+	private String nome, codigo;
+	private Professor professor;
 
 	public Disciplina() {
 		super();
 	}
 
-	public Disciplina(Integer periodo, String nome, String professor, String codigo) {
+	public Disciplina(Integer periodo, String nome, Professor professor, String codigo) {
 		super();
 		this.periodo = periodo;
 		this.nome = nome;
@@ -16,7 +17,7 @@ public class Disciplina {
 		this.codigo = codigo;
 	}
 
-	public Disciplina(Integer id, Integer periodo, String nome, String professor, String codigo) {
+	public Disciplina(Integer id, Integer periodo, String nome, Professor professor, String codigo) {
 		super();
 		this.id = id;
 		this.periodo = periodo;
@@ -49,11 +50,11 @@ public class Disciplina {
 		this.nome = nome;
 	}
 
-	public String getProfessor() {
+	public Professor getProfessor() {
 		return professor;
 	}
 
-	public void setProfessor(String professor) {
+	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
 

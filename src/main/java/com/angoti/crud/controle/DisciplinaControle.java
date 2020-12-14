@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.angoti.crud.dao.DisciplinaDAO;
+import com.angoti.crud.dao.ProfessorDAO;
 import com.angoti.crud.dominio.Disciplina;
+import com.angoti.crud.dominio.Professor;
+
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.mockito.Mockito.after;
 
 import java.util.List;
 
@@ -16,11 +21,14 @@ import java.util.List;
 public class DisciplinaControle {
 
 	@Autowired
-	DisciplinaDAO dao;
+	DisciplinaDAO daoDisciplina;
+	
+	@Autowired
+	ProfessorDAO daoProfessor;
 
 	@GetMapping("/disciplinas")
 	public String disciplinasTabela(Model modelo) {
-		List<Disciplina> lista = dao.todos();
+		List<Disciplina> lista = daoDisciplina.todos();
 		modelo.addAttribute("lista", lista);
 		return "disciplinas";
 	}
@@ -28,31 +36,33 @@ public class DisciplinaControle {
 	@GetMapping("/disciplina-form")
 	public String exibeForm(Model model) {
 		model.addAttribute("disciplina", new Disciplina());
+		model.addAttribute("lista", daoProfessor.todos());
 		return "disciplina-form";
 	}
 
 	@PostMapping("/disciplina-form")
 	public String processaForm(Disciplina disciplina) {
-		dao.inserir(disciplina);
+		daoDisciplina.inserir(disciplina);
 		return "redirect:/disciplinas";
 	}
 
 	@GetMapping("/editar-disciplina")
-	public String exibeFormEdit(Model model, @RequestParam(name = "id", required = false) Integer cod){
-		Disciplina disciplina = dao.buscaPorId(cod);
+	public String exibeFormEdit(Model model, @RequestParam(name = "id", required = false) Integer cod) {
+		Disciplina disciplina = daoDisciplina.buscaPorId(cod);
+		model.addAttribute("lista", daoProfessor.todos());
 		model.addAttribute("disciplina", disciplina);
 		return "disciplina-form";
 	}
 
 	@PostMapping("/editar-disciplina")
 	public String processaoFormEdit(Disciplina disciplina) {
-		dao.atualizar(disciplina);
+		daoDisciplina.atualizar(disciplina);
 		return "redirect:/disciplinas";
 	}
-	
+
 	@GetMapping("/excluir-disciplina")
 	public String excluir(@RequestParam(name = "id", required = true) Integer cod) {
-		dao.excluir(cod);
+		daoDisciplina.excluir(cod);
 		return "redirect:/disciplinas";
 	}
 }

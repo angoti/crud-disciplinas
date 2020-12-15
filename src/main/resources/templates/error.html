@@ -20,7 +20,7 @@
       <p th:if="${message}">
         <b>Mensagem :</b> <span th:text="${message}"></span>
       </p>
-        <b>Variáveis:</b> <span th:text="${#ctx.variableNames}"></span>
+        <b>Variáveis:</b> <span th:text="${#ctx.getVariableNames()}"></span>
 
     </div>
   </div>

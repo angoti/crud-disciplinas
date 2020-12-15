@@ -2,8 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout">
 <div th:fragment="conteudo">
   <div class="container mt-3">
-    <div class="col">
-      <h1>Home</h1>
+
+    <div class="jumbotron jumbotron-fluid pt-0 pb-0 mt-0 mb-0">
+      <h1 class="display-4 text-center">Sistema Web MVC e SQL CRUD</h1>
+      <p class="lead text-center">Exemplo de sistema CRUD - Entidades Disciplina e Professor</p>
+      <div class="row">
+        <div class="col">
+          <img src="imagens/der.png" height="400px" class="rounded mx-auto d-block"
+            alt="Diagrama de Entidades e Relacionamentos"
+          >
+        </div>
+        <div class="col">
+          <p class="lead text-center">
+            <a href="/home2">
+              <button type="button" class="btn btn-primary">Lista de vídeos</button>
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

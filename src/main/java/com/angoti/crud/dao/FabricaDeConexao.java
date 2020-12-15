@@ -8,7 +8,8 @@ public class FabricaDeConexao {
 
 	public static Connection getConnection() {
 		try {
-			return DriverManager.getConnection("jdbc:mysql://localhost/sistema4?serverTimezone=UTC", "root", "");
+			return DriverManager.getConnection("mysql://b65f349e12df59:ccf37ce4@us-cdbr-east-02.cleardb.com/heroku_29233e2d8f9b041?reconnect=true");
+//			return DriverManager.getConnection("jdbc:mysql://localhost/sistema4?serverTimezone=UTC", "root", "");
 		} catch (SQLException e) {
 			System.out.println("---------------------> " + e.getMessage());
 			return null;

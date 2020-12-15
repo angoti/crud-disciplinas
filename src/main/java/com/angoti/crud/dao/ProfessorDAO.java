@@ -17,7 +17,7 @@ public class ProfessorDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	public class ProfessorRowMapper implements RowMapper<Professor> {
+	private class ProfessorRowMapper implements RowMapper<Professor> {
 
 		@Override
 		public Professor mapRow(ResultSet rs, int rowNum) throws SQLException {

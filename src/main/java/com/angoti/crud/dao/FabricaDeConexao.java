@@ -12,6 +12,7 @@ public class FabricaDeConexao {
 //			return DriverManager.getConnection("jdbc:mysql://localhost/sistema4?serverTimezone=UTC", "root", "");
 		} catch (SQLException e) {
 			System.out.println("---------------------> " + e.getMessage());
+			e.printStackTrace();
 			return null;
 		}
 	}

@@ -20,11 +20,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>crud_disciplinas.sql</name>
-			<type>1</type>
-			<location>C:/Users/angot/Desktop/crud_disciplinas.sql</location>
-		</link>
-	</linkedResources>
 </projectDescription>

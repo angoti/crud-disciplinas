@@ -13,10 +13,15 @@ import java.util.List;
 
 @Controller
 public class DisciplinaControle {
-
-	@Autowired
-	DisciplinaDAO dao;
 	
+	DisciplinaDAO dao;
+
+	public DisciplinaControle() {
+		super();
+		this.dao = new DisciplinaDAO();
+	}
+
+
 	@GetMapping("/disciplinas")
 	public String disciplinasTabela(Model modelo) {
 		List<Disciplina> lista = dao.todos();

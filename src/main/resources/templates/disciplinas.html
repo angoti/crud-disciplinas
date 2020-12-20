@@ -11,6 +11,7 @@
             <th>Professor</th>
             <th>Período</th>
             <th>Classroom</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -20,6 +21,10 @@
             <td th:text="*{professor}">3</td>
             <td th:text="*{periodo}">4</td>
             <td th:text="*{codigo}">5</td>
+            <td>
+              <a th:href="@{/excluir-disciplina(id=*{id})}">Excluir</a>
+              <a href="#">Editar</a> 
+            </td>
           </tr>
         </tbody>
       </table>

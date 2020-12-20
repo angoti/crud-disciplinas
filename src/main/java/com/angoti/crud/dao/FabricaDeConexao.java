@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-//implementa o design pattern Factory
 public class FabricaDeConexao {
 
 	public static Connection getConnection() {

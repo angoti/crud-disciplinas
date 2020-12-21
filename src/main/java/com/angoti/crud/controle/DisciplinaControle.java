@@ -25,16 +25,11 @@ public class DisciplinaControle {
   public String disciplinasTabela(Model modelo) {
     List<Disciplina> lista = dao.todos();
     modelo.addAttribute("lista", lista);
+    modelo.addAttribute("disciplina", new Disciplina());
     return "disciplinas";
   }
 
-  @GetMapping("/disciplina-form")
-  public String exibeForm(Model model) {
-    model.addAttribute("disciplina", new Disciplina());
-    return "disciplina-form";
-  }
-
-  @PostMapping("/disciplina-form")
+  @PostMapping("/disciplina-grava")
   public String processaForm(Disciplina disciplina) {
     dao.inserir(disciplina);
     return "redirect:/disciplinas";

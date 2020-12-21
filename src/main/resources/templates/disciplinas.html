@@ -1,8 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout">
 <div th:fragment="conteudo">
+
   <div class="container mt-3">
-    <div class="col-12">
+    <div class="row text-light bg-dark pt-3 pb-3">
+      <div class="col-sm-auto">
+        <h2>Disciplinas <b>CRUD</b></h2>
+      </div>
+      <div class="col">
+        <a href="#nova-disciplina-modal" class="btn btn-primary" data-toggle="modal"> <span class=" h-100 d-inline-block">
+            <span class="material-icons  align-middle">add_circle_outline</span>
+            <span class="ml-1 mb-1  align-middle">Adicionar nova disciplina</span>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
       <table class="table table-dark table-hover">
         <thead>
           <tr>
@@ -22,13 +35,104 @@
             <td th:text="*{periodo}">4</td>
             <td th:text="*{codigo}">5</td>
             <td>
-              <a th:href="@{/excluir-disciplina(id=*{id})}">Excluir</a>
-              <a href="#">Editar</a> 
+              <a href="#excluir-disciplina-modal" data-toggle="modal">Excluir</a> <a href="#editar-disciplina-modal"
+                data-toggle="modal">Editar</a>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+
+  <!-- modal nova disciplina -->
+  <div id="nova-disciplina-modal" class="modal fade ">
+    <div class="modal-dialog ">
+      <div class="modal-content text-white bg-dark">
+        <form action="/disciplina-grava" method="post" th:object="${disciplina}">
+          <div class="modal-header">
+            <h4 class="modal-title">Nova Disciplina</h4>
+            <button type="button" class="close btn-primary" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Nome</label> <input type="text" th:field="*{nome}" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Professor</label> <input type="text" th:field="*{professor}" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Período</label><br>
+              <div th:each="p : ${#numbers.sequence(1,5)}" class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" th:field="*{periodo}" th:value="${p}" /> 
+                  <label class="form-check-label" th:text="${p}">Periodo</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Código sala classroom</label> <input type="text" th:field="*{codigo}" class="form-control" required>
+            </div>
+          </div>
+          <div class="modal-footer bg-dark">
+            <input type="submit" class="btn btn-primary" value="Cadastrar">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- modal editar -->
+  <div id="editar-disciplina-modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form>
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Employee</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Name</label> <input type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label> <input type="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <textarea class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+              <label>Phone</label> <input type="text" class="form-control" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"> <input type="submit"
+              class="btn btn-info" value="Save">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- modal confirma exclusão -->
+  <div id="excluir-disciplina-modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form>
+          <div class="modal-header">
+            <h4 class="modal-title">Delete Employee</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete these Records?</p>
+            <p class="text-warning">
+              <small>This action cannot be undone.</small>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"> <input type="submit"
+              class="btn btn-danger" value="Delete">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
 </div>
 </html>

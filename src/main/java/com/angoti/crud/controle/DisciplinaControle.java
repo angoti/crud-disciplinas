@@ -34,5 +34,11 @@ public class DisciplinaControle {
     dao.inserir(disciplina);
     return "redirect:/disciplinas";
   }
+  
+  @GetMapping("/excluir-disciplina")
+  public String excluir(@RequestParam(name = "id", required = true) Integer cod) {
+    dao.excluir(cod);
+    return "redirect:/disciplinas";
+  }
 
 }

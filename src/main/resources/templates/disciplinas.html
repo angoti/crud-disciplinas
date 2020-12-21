@@ -35,7 +35,7 @@
             <td th:text="*{periodo}">4</td>
             <td th:text="*{codigo}">5</td>
             <td>
-              <a href="#excluir-disciplina-modal" data-toggle="modal">Excluir</a> <a href="#editar-disciplina-modal"
+              <a href="#excluir-disciplina-modal" data-toggle="modal" th:attr="data-id=*{id}">Excluir</a> <a href="#editar-disciplina-modal"
                 data-toggle="modal">Editar</a>
             </td>
           </tr>
@@ -114,20 +114,20 @@
   <div id="excluir-disciplina-modal" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form>
+        <form action="/excluir-disciplina" method="get">
           <div class="modal-header">
-            <h4 class="modal-title">Delete Employee</h4>
+            <h4 class="modal-title">Excluir disciplina</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <div class="modal-body">
-            <p>Are you sure you want to delete these Records?</p>
+            <p>Tem certeza que deseja excluir registro com id: <span id="codigo">id da disciplina</span></p>
             <p class="text-warning">
-              <small>This action cannot be undone.</small>
+              <small>Não pode ser desfeito.</small>
             </p>
           </div>
           <div class="modal-footer">
-            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"> <input type="submit"
-              class="btn btn-danger" value="Delete">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"> 
+            <input type="submit" class="btn btn-danger" value="Delete">
           </div>
         </form>
       </div>

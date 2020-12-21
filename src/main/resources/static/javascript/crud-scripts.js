@@ -15,10 +15,11 @@ $('#atualiza-conta').on('show.bs.modal', function(event) {
 })
 
 
-$('#exclui-conta').on('show.bs.modal', function(event) {
+$('#excluir-disciplina-modal').on('show.bs.modal', function(event) {
 	var button = $(event.relatedTarget) // Button that triggered the modal
 	var id = button.data('id') // Extract info from data-* attributes
 	var modal = $(this)
+	modal.find('.modal-content #codigo').val(id)
 	modal.find('.modal-content #codigo').val(id)
 })
 

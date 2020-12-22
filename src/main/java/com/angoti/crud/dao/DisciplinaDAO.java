@@ -86,11 +86,13 @@ public class DisciplinaDAO {
 			stmt.setInt(3, disciplina.getPeriodo());
 			stmt.setString(4, disciplina.getCodigo());
 			stmt.setInt(5, disciplina.getId());
+			System.out.println(stmt.toString());
 			stmt.execute();
 			stmt.close();
 			conexao.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

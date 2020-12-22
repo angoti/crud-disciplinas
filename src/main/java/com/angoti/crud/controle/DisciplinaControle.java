@@ -31,10 +31,15 @@ public class DisciplinaControle {
 
   @PostMapping("/disciplina-grava")
   public String processaForm(Disciplina disciplina) {
-    dao.inserir(disciplina);
+    if (disciplina.getId() == null) {
+      dao.inserir(disciplina);
+    } else {
+      System.out.println("1");
+      dao.atualizar(disciplina);
+    }
     return "redirect:/disciplinas";
   }
-  
+
   @GetMapping("/excluir-disciplina")
   public String excluir(@RequestParam(name = "id", required = true) Integer cod) {
     dao.excluir(cod);

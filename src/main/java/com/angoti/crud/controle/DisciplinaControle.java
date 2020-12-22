@@ -34,7 +34,6 @@ public class DisciplinaControle {
     if (disciplina.getId() == null) {
       dao.inserir(disciplina);
     } else {
-      System.out.println("1");
       dao.atualizar(disciplina);
     }
     return "redirect:/disciplinas";

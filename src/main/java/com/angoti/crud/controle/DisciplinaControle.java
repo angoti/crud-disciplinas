@@ -14,30 +14,36 @@ import com.angoti.crud.dominio.Disciplina;
 @Controller
 public class DisciplinaControle {
 
-  DisciplinaDAO dao;
+	DisciplinaDAO dao;
 
-  public DisciplinaControle() {
-    super();
-    this.dao = new DisciplinaDAO();
-  }
+	public DisciplinaControle() {
+		super();
+		this.dao = new DisciplinaDAO();
+	}
 
-  @GetMapping("/disciplinas")
-  public String disciplinasTabela(Model modelo) {
-    List<Disciplina> lista = dao.todos();
-    modelo.addAttribute("lista", lista);
-    return "disciplinas";
-  }
+	@GetMapping("/disciplinas")
+	public String disciplinasTabela(Model modelo) {
+		List<Disciplina> lista = dao.todos();
+		modelo.addAttribute("lista", lista);
+		return "disciplinas";
+	}
 
-  @GetMapping("/disciplina-form")
-  public String exibeForm(Model model) {
-    model.addAttribute("disciplina", new Disciplina());
-    return "disciplina-form";
-  }
+	@GetMapping("/disciplina-form")
+	public String exibeForm(Model model) {
+		model.addAttribute("disciplina", new Disciplina());
+		return "disciplina-form";
+	}
 
-  @PostMapping("/disciplina-form")
-  public String processaForm(Disciplina disciplina) {
-    dao.inserir(disciplina);
-    return "redirect:/disciplinas";
-  }
+	@PostMapping("/disciplina-form")
+	public String processaForm(Disciplina disciplina) {
+		dao.inserir(disciplina);
+		return "redirect:/disciplinas";
+	}
+
+	@GetMapping("/excluir-disciplina")
+	public String excluirDisciplina(@RequestParam(name="id") int id) {
+		dao.excluir(id);
+		return "redirect:/disciplinas";
+	}
 
 }

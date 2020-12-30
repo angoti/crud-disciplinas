@@ -9,21 +9,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.angoti.crud.dao.DisciplinaDAO;
+import com.angoti.crud.dao.ProfessorDAO;
 import com.angoti.crud.dominio.Disciplina;
+import com.angoti.crud.dominio.Professor;
 
 @Controller
 public class DisciplinaControle {
 
-	DisciplinaDAO dao;
+	DisciplinaDAO disciplinaDAO;
+	ProfessorDAO professorDAO;
 
 	public DisciplinaControle() {
 		super();
-		this.dao = new DisciplinaDAO();
+		disciplinaDAO = new DisciplinaDAO();
+		professorDAO = new ProfessorDAO();
 	}
 
 	@GetMapping("/disciplinas")
 	public String disciplinasTabela(Model modelo) {
-		List<Disciplina> lista = dao.todos();
+		List<Disciplina> lista = disciplinaDAO.todos();
 		modelo.addAttribute("lista", lista);
 		return "disciplinas";
 	}
@@ -31,18 +35,19 @@ public class DisciplinaControle {
 	@GetMapping("/disciplina-form")
 	public String exibeForm(Model model) {
 		model.addAttribute("disciplina", new Disciplina());
+		model.addAttribute("listaDeProfessores",professorDAO.todos());
 		return "disciplina-form";
 	}
 
 	@PostMapping("/disciplina-form")
 	public String processaForm(Disciplina disciplina) {
-		dao.inserir(disciplina);
+		disciplinaDAO.inserir(disciplina);
 		return "redirect:/disciplinas";
 	}
 
 	@GetMapping("/excluir-disciplina")
 	public String excluirDisciplina(@RequestParam(name="id") int id) {
-		dao.excluir(id);
+		disciplinaDAO.excluir(id);
 		return "redirect:/disciplinas";
 	}
 

@@ -34,3 +34,5 @@ $('#tabela-dados tr').has('td').each(function() {
     array.push(arrayItem);
 });
 
+
+

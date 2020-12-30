@@ -8,7 +8,7 @@ public class FabricaDeConexao {
 
 	public static Connection getConnection() {
 		try {
-			return DriverManager.getConnection("jdbc:mysql://localhost/crud0?serverTimezone=UTC", "root", "");
+			return DriverManager.getConnection("jdbc:mysql://localhost/crud?serverTimezone=UTC", "root", "");
 		} catch (SQLException e) {
 			System.out.println("-----------> " + e.getMessage());
 			return null;

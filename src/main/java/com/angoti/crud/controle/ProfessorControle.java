@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.angoti.crud.dao.DisciplinaDAO;
 import com.angoti.crud.dao.ProfessorDAO;
-import com.angoti.crud.dominio.Disciplina;
 import com.angoti.crud.dominio.Professor;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Controller

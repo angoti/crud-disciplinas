@@ -1,12 +1,13 @@
 package com.angoti.crud;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
-public class DisciplinaApplication {
+public class DisciplinaApplication implements CommandLineRunner {
 
 	@Autowired
 	private static JdbcTemplate jdbcTemplate;
@@ -14,6 +15,10 @@ public class DisciplinaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DisciplinaApplication.class, args);
 
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
 		// Execute os comandos SQL para criar as tabelas
 		jdbcTemplate.execute("CREATE TABLE professor (" +
 				"id INT AUTO_INCREMENT PRIMARY KEY," +
@@ -30,6 +35,7 @@ public class DisciplinaApplication {
 				"CONSTRAINT disciplina_ibfk_1 FOREIGN KEY (prof) REFERENCES professor (id)" +
 				") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
+		throw new UnsupportedOperationException("Unimplemented method 'run'");
 	}
 
 }

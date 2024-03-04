@@ -1,4 +1,4 @@
-create database 'crud0';
+create database 'testdb';
 CREATE TABLE `professor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,

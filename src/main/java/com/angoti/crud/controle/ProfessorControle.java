@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.angoti.crud.dao.ProfessorDAO;
 import com.angoti.crud.dominio.Professor;
+import com.angoti.crud.repository.ProfessorDAO;
 
 import java.util.List;
 

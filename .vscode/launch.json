@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-DisciplinaApplication<crud>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.angoti.crud.DisciplinaApplication",
+      "projectName": "crud",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

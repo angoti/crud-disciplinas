@@ -12,7 +12,8 @@ public class FabricaDeConexao {
 	private FabricaDeConexao() {
 		try {
 			// Configuração para usar o banco de dados H2 em memória
-			conexao = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
+			conexao = DriverManager.getConnection(
+					"jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE", "sa", "");
 			// Você pode ajustar o nome do banco de dados (testdb) e o usuário (sa) conforme
 			// necessário.
 		} catch (SQLException e) {

@@ -36,7 +36,7 @@ public class DisciplinaControle {
 		return "disciplina-form";
 	}
 
-	@PostMapping("/disciplina-form")
+	@PostMapping("/cadastra-disciplina")
 	public String processaForm(Disciplina disciplina) {
 		daoDisciplina.inserir(disciplina);
 		return "redirect:/disciplinas";

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout">
 <div th:fragment="conteudo">
   <div class="container mt-3">
-    <form class="col-6" method="post" th:object="${disciplina}">
+    <form class="col-6" method="get" action="/cadastra-disciplina" th:object="${disciplina}">
       <h3>Nova disciplina</h3>
       <div class="form-group">
         <label>Nome da disciplina</label>
